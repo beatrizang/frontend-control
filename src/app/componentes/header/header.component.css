@@ -1,0 +1,34 @@
+.header{
+    background: var(--azul-verdoso-oscuro);
+    position: fixed;
+    width: 100%;
+}
+.header__menu{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.8rem;
+}
+
+.header__item{
+    color:aliceblue;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header__link{
+    background: aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 2rem;
+    color: var(--azul-verdoso-oscuro);
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+}
+
+.header__link:hover{
+    background: var(--azul-verdoso-oscuro);
+    color: aliceblue;
+    transition: 0.3s;
+}

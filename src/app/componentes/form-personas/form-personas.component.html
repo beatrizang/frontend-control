@@ -1,0 +1,65 @@
+
+<section class="formulario">
+    <h3 class="formulario__titulo" *ngIf="!persona.id_persona">Agregar Nueva Persona</h3>
+    <h3 class="formulario__titulo" *ngIf="persona.id_persona">Modificar Persona</h3>
+    <form #personaForm="ngForm" class="formulario__form">
+        
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta">Apellido</label>
+            <input 
+            name="apellido"
+            class="formulario__input" type="text" placeholder="Ingrese el apellido" [(ngModel)]="persona.apellido" required minlength="4" #apellido="ngModel">
+            <div class="error" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div class="error__contenedor" *ngIf="apellido.errors.required">
+                    <p class="error__mensaje">El apellido no puede estar vacío</p>
+                </div>
+                <div class="error__contenedor" *ngIf="apellido.errors.minlength">
+                    <p class="error__mensaje">El apellido debe tener al menos 4 caracteres</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta">Nombre</label>
+            <input 
+            name="nombre"
+            class="formulario__input" 
+            type="text" placeholder="Ingrese el nombre" 
+            [(ngModel)]="persona.nombre" 
+            required 
+            minlength="4" 
+            #nombre="ngModel">
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div class="error__contenedor" *ngIf="nombre.errors.required">
+                    <p class="error__mensaje">El nombre no puede estar vacío</p>
+                </div>
+                <div class="error__contenedor" *ngIf="apellido.errors.minlength">
+                    <p class="error__mensaje">El nombre debe tener al menos 4 caracteres</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta">Altura</label>
+            <input
+            name="altura" 
+            class="formulario__input" type="number" placeholder="Ingrese la altura en cm. Ej: 165cm" [(ngModel)]="persona.altura">
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta">Fecha de Nacimiento</label>
+            <input
+             name="fecha_nac"
+             class="formulario__input" type="date" [(ngModel)]="persona.fecha_nac">
+        </div>
+
+        
+
+        <div class="formulario__botones">
+            <button class="formulario__boton" [routerLink]="['/inicio']">Cancelar</button>
+
+            <button class="formulario__boton" (click)="crearPersona()" *ngIf="!persona.id_persona else elseBlock" [disabled]="!personaForm.form.valid">Agregar</button>
+
+            <ng-template #elseBlock>
+                <button class="formulario__boton" (click)="modificarPersona()" [disabled]="!personaForm.form.valid">Editar</button>
+            </ng-template>
+        </div>
+    </form>
+</section>

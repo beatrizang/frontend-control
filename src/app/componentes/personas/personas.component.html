@@ -1,0 +1,33 @@
+<app-header></app-header>
+<section class="personas">
+    <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="personas__anadir" [routerLink]="['/personas/form']">Añadir Persona</button>
+    <div class="alerta" *ngIf="personas?.length <= 0">
+        <p>No hay registros en la base de datos</p>
+    </div>
+    <table class="tabla" *ngIf="personas?.length>0">
+        <thead class="tabla__head">
+            <tr class="tabla__fila">
+                <th class="tabla__cabecera">Apellido</th>
+                <th class="tabla__cabecera">Nombre</th>
+                <th class="tabla__cabecera">Fecha Nacimiento</th>
+                <th class="tabla__cabecera">Altura</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__cabecera">Modificar</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__cabecera">Eliminar</th>
+                <th *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__cabecera">Controles</th>
+            </tr>
+        </thead>
+        <tbody class="tabla__cuerpo">
+            <tr class="tabla__fila" *ngFor="let persona of personas">
+                <td class="tabla__columna">{{persona.apellido}}</td>
+                <td class="tabla__columna">{{persona.nombre}}</td>
+                <td class="tabla__columna">{{persona.fecha_nac | date:"dd-MM-yyyy"}}</td>
+                <td class="tabla__columna" *ngIf="persona.altura">{{persona.altura}}</td>
+                <td class="tabla__columna" *ngIf="!persona.altura">-</td>
+                <td *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__columna"><i class="tabla__icono fa-solid fa-pen" [routerLink]="['/personas/form',persona.id_persona]"></i></td>
+                <td *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__columna"><i class="tabla__icono fa-solid fa-trash" (click)="eliminarPersona(persona)"></i></td>
+                <td *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__columna"><a><i class="tabla__icono fa-solid fa-list" [routerLink]="['/controles',persona.id_persona]"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <app-paginator *ngIf="paginador" [paginador] ="paginador"></app-paginator>
+</section>

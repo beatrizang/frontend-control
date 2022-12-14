@@ -1,0 +1,45 @@
+<section class="controles">   
+    <h3 class="controles__titulo">Controles de {{persona.apellido}} {{persona.nombre}}</h3>
+
+    <div class="controles__vacio" *ngIf="persona.controles.length ==0">
+        No hay controles asignados
+    </div>
+
+    <div class="botones">
+        <button class="boton" [routerLink]="['/inicio']">Volver</button>
+        <button class="boton">Añadir Control</button>
+    </div>
+
+    <table class="tabla" *ngIf="persona.controles.length>0">
+        <thead class="tabla__head">
+            <tr class="tabla__fila">
+                <th class="tabla__cabecera">Fecha</th>
+                <th class="tabla__cabecera">Peso</th>
+                <th class="tabla__cabecera">Grasa</th>
+                <th class="tabla__cabecera">IMC</th>
+                <th class="tabla__cabecera">Musculo</th>
+                <th class="tabla__cabecera">Calorias</th>
+                <th class="tabla__cabecera">Edad Metabolica</th>
+                <th class="tabla__cabecera">Grasa Visceral</th>
+                <th class="tabla__cabecera">Modificar</th>
+                <th class="tabla__cabecera">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody class="tabla__cuerpo">
+            <tr class="tabla__fila" *ngFor="let control of persona.controles">
+                <td class="tabla__columna">{{control.fecha | date:"dd-MM-yyyy"}}</td>
+                <td class="tabla__columna">{{control.peso}} Kg</td>
+                <td class="tabla__columna">{{control.grasa}}%</td>
+                <td class="tabla__columna">{{control.imc}}</td>
+                <td class="tabla__columna">{{control.musculo}}%</td>
+                <td class="tabla__columna">{{control.calorias}}</td>
+                <td class="tabla__columna">{{control.edad_metabolica}} Años</td>
+                <td class="tabla__columna">{{control.visceral}}</td>
+                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-pen"></i></td>
+                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-trash"></i></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+</section>

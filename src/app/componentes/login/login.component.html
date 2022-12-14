@@ -1,0 +1,18 @@
+<section class="sesion">
+    <h3 class="sesion__titulo">Iniciar Sesion</h3>
+    <form class="sesion__form">
+        <fieldset class="sesion__grupo">
+            <label class="sesion__label">Usuario</label>
+            <input [(ngModel)]="usuario.username" class="sesion__input" type="text" placeholder="Ingrese su usuario" name="username" id="username" autofocus required>
+        </fieldset>
+
+        <fieldset class="sesion__grupo">
+            <label class="sesion__label">Contraseña</label>
+            <input [(ngModel)]="usuario.password" class="sesion__input" type="password" placeholder="Ingrese su contraseña" name="password" id="password" required>
+        </fieldset>
+        <div class="sesion__botones">
+            <button class="sesion__boton" [routerLink]="['/inicio']">Cancelar</button>
+            <input (click)="login()" class="sesion__boton" type="submit" value="Log In">
+        </div>
+    </form>
+</section>

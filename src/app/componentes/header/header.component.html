@@ -1,0 +1,7 @@
+<header class="header">
+    <ul class="header__menu">
+        <li class="header__item">Control de Peso</li>
+        <li *ngIf="!authService.isAuthenticated()" class="header__item"><a class="header__link" [routerLink]="['/login']">Log In</a></li>
+        <li *ngIf="authService.isAuthenticated()" class="header__item"><a class="header__link" (click)="logout()">Log Out</a></li>
+    </ul>
+</header>
