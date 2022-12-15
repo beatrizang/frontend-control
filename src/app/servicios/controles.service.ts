@@ -19,7 +19,7 @@ export class ControlesService {
   }
 
   crearControl(control: Controles):Observable<Controles>{
-    return this.http.post<Controles>(this.urlEndPoint,control, {headers:this.httpHeaders});
+    return this.http.post<Controles>(this.urlEndPoint,control);
   }
 
   getControl(id):Observable<Controles>{
@@ -30,7 +30,7 @@ export class ControlesService {
     return this.http.put<Controles>(`${this.urlEndPoint}/${control.id_control}`,control,{headers:this.httpHeaders});
   }
 
-  eliminarControl(id: number):Observable<Controles>{
-    return this.http.delete<Controles>(`${this.urlEndPoint}/${id}`,{headers:this.httpHeaders});
+  eliminarControl(id: number):Observable<void>{
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`);
   }
 }

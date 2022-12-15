@@ -7,7 +7,7 @@
 
     <div class="botones">
         <button class="boton" [routerLink]="['/inicio']">Volver</button>
-        <button class="boton">Añadir Control</button>
+        <button class="boton" [routerLink]="['/controles/form/',persona.id_persona]">Añadir Control</button>
     </div>
 
     <table class="tabla" *ngIf="persona.controles.length>0">
@@ -36,7 +36,7 @@
                 <td class="tabla__columna">{{control.edad_metabolica}} Años</td>
                 <td class="tabla__columna">{{control.visceral}}</td>
                 <td class="tabla__columna"><i class="tabla__icono fa-solid fa-pen"></i></td>
-                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-trash"></i></td>
+                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-trash" (click)="eliminar(control)"></i></td>
             </tr>
         </tbody>
     </table>

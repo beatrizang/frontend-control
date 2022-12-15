@@ -16,9 +16,8 @@ const routes: Routes = [
 },
   {path:'inicio/page/:page', component:PersonasComponent},
   {path:'login',component:LoginComponent},
-  {path:'controles/:id',component:ControlesComponent},
-  {path:'controles/form',component:FormControlComponent},
-  {path:'controles/form/:id',component:FormControlComponent}
+  {path:'controles/:id',component:ControlesComponent, canActivate:[AuthGuard,RoleGuard],data:{role:'ROLE_ADMIN'}},
+  {path:'controles/form/:personaId',component:FormControlComponent, canActivate:[AuthGuard,RoleGuard],data:{role:'ROLE_ADMIN'}}
 
 ];
 
