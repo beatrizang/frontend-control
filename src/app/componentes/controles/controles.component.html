@@ -27,7 +27,7 @@
         </thead>
         <tbody class="tabla__cuerpo">
             <tr class="tabla__fila" *ngFor="let control of persona.controles">
-                <td class="tabla__columna">{{control.fecha | date:"dd-MM-yyyy"}}</td>
+                <td class="tabla__columna">{{control.fecha | date:"dd/MM/yyyy"}}</td>
                 <td class="tabla__columna">{{control.peso}} Kg</td>
                 <td class="tabla__columna">{{control.grasa}}%</td>
                 <td class="tabla__columna">{{control.imc}}</td>
@@ -35,7 +35,7 @@
                 <td class="tabla__columna">{{control.calorias}}</td>
                 <td class="tabla__columna">{{control.edad_metabolica}} Años</td>
                 <td class="tabla__columna">{{control.visceral}}</td>
-                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-pen"></i></td>
+                <td class="tabla__columna"><i class="tabla__icono fa-solid fa-pen" [routerLink]="['/controlesmodif/form',control.id_control]"></i></td>
                 <td class="tabla__columna"><i class="tabla__icono fa-solid fa-trash" (click)="eliminar(control)"></i></td>
             </tr>
         </tbody>

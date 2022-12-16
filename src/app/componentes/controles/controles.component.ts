@@ -33,6 +33,7 @@ export class ControlesComponent implements OnInit {
     })
   }
 
+
   eliminar(control: Controles){
     Swal.fire({
       title: 'Estas seguro de eliminar este control?',

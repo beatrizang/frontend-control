@@ -16,6 +16,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ControlesComponent } from './componentes/controles/controles.component';
 import { FormControlComponent } from './componentes/form-control/form-control.component';
+import { FormmodControlComponent } from './componentes/formmod-control/formmod-control.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormControlComponent } from './componentes/form-control/form-control.co
     HeaderComponent,
     LoginComponent,
     ControlesComponent,
-    FormControlComponent
+    FormControlComponent,
+    FormmodControlComponent
   ],
   imports: [
     BrowserModule,

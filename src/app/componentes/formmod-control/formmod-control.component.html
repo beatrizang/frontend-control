@@ -1,0 +1,88 @@
+<section class="formulario">
+    <h3 class="formulario__titulo">Nuevo Control</h3>
+    <form #controlForm="ngForm" class="formulario__form">
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="fecha">Persona</label>
+            <input class="formulario__input" type="text" name="fecha" value="{{control.persona.apellido}} {{control.persona.nombre}}" disabled>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="fecha">Fecha de Control</label>
+            <input class="formulario__input" type="date" name="fecha" [(ngModel)]="control.fecha" required
+            #fecha="ngModel">
+            <div class="error" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+                <div class="error__contenedor" *ngIf="fecha.errors.required">
+                    <p class="error__mensaje">La fecha no puede estar vacía</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="peso">Peso</label>
+            <input class="formulario__input" type="number" name="peso" [(ngModel)]="control.peso" required #peso="ngModel">
+            <div *ngIf="peso.invalid && (peso.dirty || peso.touched)">
+                <div class="error__contenedor" *ngIf="peso.errors.required">
+                    <p class="error__mensaje">El peso no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="grasa">Grasa</label>
+            <input class="formulario__input" type="number" name="grasa" [(ngModel)]="control.grasa" required #grasa="ngModel">
+            <div *ngIf="grasa.invalid && (grasa.dirty || grasa.touched)">
+                <div class="error__contenedor" *ngIf="grasa.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="imc">IMC</label>
+            <input class="formulario__input" type="number" name="imc" [(ngModel)]="control.imc" required #imc="ngModel">
+            <div *ngIf="imc.invalid && (imc.dirty || imc.touched)">
+                <div class="error__contenedor" *ngIf="imc.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="musculo">Musculo</label>
+            <input class="formulario__input" type="number" name="musculo" [(ngModel)]="control.musculo" required #musculo="ngModel">
+            <div *ngIf="musculo.invalid && (musculo.dirty || musculo.touched)">
+                <div class="error__contenedor" *ngIf="musculo.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="calorias">Calorías</label>
+            <input class="formulario__input" type="number" name="calorias" [(ngModel)]="control.calorias" required #calorias="ngModel">
+            <div *ngIf="calorias.invalid && (calorias.dirty || calorias.touched)">
+                <div class="error__contenedor" *ngIf="calorias.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="edad_metabolica">Edad Metabolica</label>
+            <input class="formulario__input" type="number" name="edad_metabolia" [(ngModel)]="control.edad_metabolica" required #metabolica="ngModel">
+            <div *ngIf="metabolica.invalid && (metabolica.dirty || metabolica.touched)">
+                <div class="error__contenedor" *ngIf="metabolica.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+        <div class="formulario__dato">
+            <label class="formulario__etiqueta" for="visceral">Grasa Visceral</label>
+            <input class="formulario__input" type="number" name="visceral" [(ngModel)]="control.visceral" required #visceral="ngModel">
+            <div *ngIf="visceral.invalid && (visceral.dirty || visceral.touched)">
+                <div class="error__contenedor" *ngIf="visceral.errors.required">
+                    <p class="error__mensaje">El campo no puede estar vacío</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="formulario__botones">
+            <button class="formulario__boton" [routerLink]="['/controles',control.persona.id_persona]">Cancelar</button>
+
+            <input class="formulario__boton" type="submit" value="Modificar" (click)="modificarControl()" [disabled]="!controlForm.form.valid">
+        </div>
+    </form>
+</section>

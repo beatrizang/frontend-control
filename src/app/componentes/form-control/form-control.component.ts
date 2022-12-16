@@ -20,6 +20,10 @@ export class FormControlComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.cargarPersona();
+  }
+
+  cargarPersona(){
     this.activatedRoute.paramMap.subscribe(params =>{
       let personaId = +params.get('personaId');
       this.personaService.getPersona(personaId).subscribe(persona => this.control.persona = persona);

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Controles } from '../clases/controles';
 
 @Injectable({
@@ -18,16 +18,32 @@ export class ControlesService {
     return this.http.get<Controles[]>(this.urlEndPoint);
   }
 
-  crearControl(control: Controles):Observable<Controles>{
-    return this.http.post<Controles>(this.urlEndPoint,control);
+  crearControl(control: Controles):Observable<any>{
+    return this.http.post<Controles>(this.urlEndPoint,control).pipe(
+      catchError(e => {
+        if(e.status==400){
+          return throwError(e);
+        }
+        return throwError(e);
+      })
+    );
   }
 
   getControl(id):Observable<Controles>{
     return this.http.get<Controles>(`${this.urlEndPoint}/${id}`);
   }
 
-  modificarControl(control: Controles):Observable<Controles>{
-    return this.http.put<Controles>(`${this.urlEndPoint}/${control.id_control}`,control,{headers:this.httpHeaders});
+  modificarControl(control: Controles):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/${control.id_control}`,control).pipe(
+      catchError(e => {
+
+        if(e.status==400){
+          return throwError(e);
+        }
+
+        return throwError(e);
+      })
+    );
   }
 
   eliminarControl(id: number):Observable<void>{

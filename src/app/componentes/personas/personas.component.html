@@ -20,7 +20,7 @@
             <tr class="tabla__fila" *ngFor="let persona of personas">
                 <td class="tabla__columna">{{persona.apellido}}</td>
                 <td class="tabla__columna">{{persona.nombre}}</td>
-                <td class="tabla__columna">{{persona.fecha_nac | date:"dd-MM-yyyy"}}</td>
+                <td class="tabla__columna">{{persona.fecha_nac | date:"dd/MM/yyyy"}}</td>
                 <td class="tabla__columna" *ngIf="persona.altura">{{persona.altura}}</td>
                 <td class="tabla__columna" *ngIf="!persona.altura">-</td>
                 <td *ngIf="authService.hasRole('ROLE_ADMIN')" class="tabla__columna"><i class="tabla__icono fa-solid fa-pen" [routerLink]="['/personas/form',persona.id_persona]"></i></td>
